@@ -13,3 +13,8 @@ variable "vpc_cidr_block" {
   type = string
   description = "cidr block to create vpc with"
 }
+
+variable "key_name" {
+  type = string
+  description = "key pair name to be used to launch ec2 instance"
+}

@@ -33,14 +33,26 @@ resource "aws_security_group" "allow_ssh" {
   }
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "helloworld" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
   subnet_id = aws_subnet.public[0].id
-  key_name = "webserver"
+  key_name = var.key_name
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
 
   tags = {
     Name = "HelloWorld"
+  }
+}
+
+resource "aws_instance" "helloworld1" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+  subnet_id = aws_subnet.public[0].id
+  key_name = var.key_name
+  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+
+  tags = {
+    Name = "HelloWorld1"
   }
 }
